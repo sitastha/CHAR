@@ -1,0 +1,948 @@
+$mq-breakpoints: (
+	// Base device classes
+	mobile:      320px,
+	tablet:      640px,
+	desktop:    1024px,
+	widescreen: 1200px,
+	tvscreen:   1920px,
+
+	// Tweakpoints
+	mobileLandscape: 480px
+	);
+
+// Show active breakpoint in top right corner of viewport
+// $mq-show-breakpoints: (mobile, mobileLandscape, tablet, desktop, widescreen, tvscreen);
+
+@import "base/markup-variables";
+@import "base/markup-mixins";
+@import "base/base-reset";
+@import "mq";
+
+.holder {
+	margin: 0 auto;
+	max-width: 1460px;
+}
+#header {
+	
+	.main-header {
+		background: url(../images/header-bg.png) no-repeat;
+		padding: 5px;
+		background-size: cover;
+		text-align: center;
+
+		@include breakpoint ($tablet-small) {
+			background: rgba(0, 0, 0, 0) url("../images/header-bg.png") no-repeat scroll 0 0 / cover ;
+			margin-right: auto;
+			margin-left: auto;
+			width: 768px;
+			position: relative;
+			z-index: 9999;
+		}
+
+		@include breakpoint ($tablet) {
+			background: rgba(0, 0, 0, 0) url("../images/header-bg.png") no-repeat scroll 0 0 / cover ;
+			margin-right: auto;
+			margin-left: auto;
+			width: 1024px;
+			position: relative;
+			z-index: 9999;
+		}
+
+		.header-border {
+			border: 1px solid #999999;
+			padding: 10px;
+			overflow: hidden;
+
+			@include breakpoint ($tablet) {
+				padding: 27px 5px;
+			}
+
+			.logo {
+				display: block;
+				margin: 0 0 20px;
+				
+				@include breakpoint ($tablet-small) {
+					float: left;
+					margin: 0;
+				}
+
+				@include breakpoint ($tablet) {
+					width: 25.3%;
+				}
+
+				img {
+					vertical-align: top;
+				}
+			}
+
+			.header-right {
+				display: block;
+				text-transform: uppercase;
+				color: #c00b12;
+				font-size: 9px;
+
+				@include breakpoint ($tablet-small) {
+					float: right;
+				}
+
+				@include breakpoint ($tablet) {
+					padding: 5px 22px;
+					font-size: 11px;
+				}
+
+				p {
+					@include breakpoint ($tablet) {
+						margin: 0 0 9px;
+					}
+				}
+
+				ul {
+					@extend %listreset;
+				}
+
+				li {
+					display: inline-block;
+
+					@include breakpoint ($tablet) {
+						margin: 0 -2px 0 9px;
+					}
+
+					.gmail {
+						background: url(../images/sprite.png) no-repeat 0 0;
+						width: 32px;
+						height: 32px;
+						text-indent: -999999px;
+						display: block;
+
+						&:hover {
+							background: url(../images/sprite.png) no-repeat 0 -35px;
+							width: 32px;
+							height: 32px;
+						}
+					}
+
+					.twitter {
+						background: url(../images/sprite.png) no-repeat -42px 0;
+						width: 32px;
+						height: 32px;
+						text-indent: -999999px;
+						display: block;
+
+						&:hover {
+							background: url(../images/sprite.png) no-repeat -42px -35px;
+							width: 32px;
+							height: 32px;
+						}
+					}
+
+					.facebook {
+						background: url(../images/sprite.png) no-repeat -84px 0;
+						width: 32px;
+						height: 32px;
+						text-indent: -999999px;
+						display: block;
+
+						&:hover {
+							background: url(../images/sprite.png) no-repeat -84px -35px;
+							width: 32px;
+							height: 32px;
+						}
+					}
+				}
+			}
+
+			#nav {
+				
+				.nav-opener {
+					display: block;
+					width:31px;
+					height:31px;
+					background:#000;
+					background:rgba(0, 0, 0, .5);
+					position:relative;
+					border-radius:3px;
+					text-indent:-9999px;
+					overflow:hidden;
+
+					@include breakpoint ($mobile-large) {
+						display: none;
+					}
+				}
+				
+				.nav-opener:before,
+				.nav-opener:after,
+				.nav-opener span{
+				background:#fff;
+				border-radius:4px;
+				position:absolute;
+				top:16px;
+				left:25%;
+				right:25%;
+				height:3px;
+				margin-top:-2px; /* height/2 */
+				-webkit-transition:all 0.2s linear;
+				transition:all 0.2s linear;
+				}
+				.nav-opener:before,
+				.nav-opener:after{
+				content:'';
+				top:10px;
+				}
+				.nav-opener:after{top:22px;}				
+
+				@include breakpoint ($mobile-large) {
+					border-left: 1px solid #999999;
+					border-right: 1px solid #999999;
+					display: block;
+					font-size: 13px;
+					line-height: 25px;
+					padding: 0;
+					text-align: center;
+					text-transform: uppercase;
+					margin: 0 0 10px;
+				}
+
+				@include breakpoint ($tablet-small) {
+					float: left;
+					margin: 0 0 0 10px;					
+				}
+
+				@include breakpoint ($tablet) {
+					padding: 0 37px;
+					text-align: left;
+					font-size: 19px;
+				}
+
+				ul.top-nav {
+					@extend %listreset;
+					text-align: left;
+					text-transform: capitalize;
+
+					@include breakpoint ($mobile-large) {
+						text-align: center;
+						margin:0 0 10px;
+					}
+				}
+
+				ul.bottom-nav {
+					@extend %listreset;
+					display: block;
+					text-align: left;
+
+					@include breakpoint ($mobile-large) {
+						text-align: center;
+						margin: 0;
+						border-top: 1px solid #999999;
+						font-size: 13px;
+						padding: 5px 0 0;
+						text-align: center;
+					}
+
+					@include breakpoint ($tablet) {
+						text-align: left;
+					}
+
+					a {
+						color: #000;
+
+						@include breakpoint ($mobile-large) {
+							color:#656565;
+						}
+					}
+				}
+
+				.drop {
+					@extend %listreset;
+					max-height: 0;
+					overflow: hidden;
+					transition: all .3s linear;
+					width: 100%;
+					text-align: left;
+					text-transform: capitalize;
+
+					@include breakpoint ($mobile-large) {
+						max-height: 1000px;
+					}
+				}
+
+				li {
+					margin: 2px 0 0;
+
+
+					@include breakpoint ($mobile-large) {
+						display: inline-block;
+						margin: 0 6px 5px;
+					}
+
+					@include breakpoint ($tablet) {
+						margin: 0 6px 6px;
+					}
+
+					a {
+						text-decoration: none;
+						color: black;
+
+						&:hover {
+							color: #c00b12;
+						}
+					}
+				}
+			}
+		}
+	}	
+}
+.slider {
+	position: relative;
+
+	img {
+		vertical-align: top;
+		width: 100%;
+		height: auto;
+	}
+
+	.cycle-gallery.gallery-js-ready {
+		width: 100%;
+		overflow: hidden;
+	}
+	h1 {
+		color: #fff;
+		font:bold 20px/15px $base-font-family;
+		margin: 0 0 15px;
+		text-transform: uppercase;
+
+		@include breakpoint ($tablet-small) {
+			font-size: 40px;
+			line-height: 50px;
+			margin: 0 0 15px;
+		}
+
+		@include breakpoint ($tablet) {
+			font-size: 139px;
+			margin: 0 0 80px;
+		}
+	}
+
+	span {
+		background: $black;
+		padding: 5px;
+
+		@include breakpoint ($mobile) {
+			font-size: 10px;
+		}
+
+		@include breakpoint ($mobile-large) {
+			font-size: 16px;
+		}
+
+		@include breakpoint ($tablet) {
+			font-size: 27px;
+			padding: 10px 5px;
+		}
+	}
+
+	.caption {
+		position: absolute;
+		top: 30%;
+		text-align: center;
+		width: 80%;
+		left: 10%;
+		right: 10%;
+
+		@include breakpoint ($tablet-small) {
+			top: 50%;
+		}
+
+		@include breakpoint ($tablet) {
+			top: 47%;
+		}
+	}
+
+	.pagination {
+		bottom: 10px;
+		left: 36.5%;
+		position: absolute;
+		right: 36.5%;
+		text-align: center;
+		width: 27%;
+
+		@include breakpoint ($tablet) {
+				bottom: 20px; 
+			}
+
+		ul {
+			@extend %listreset;
+		}
+
+		li {
+			background: #fff none repeat scroll 0 0;
+			border: 1px double #fff;
+			border-radius: 66px;
+			cursor: pointer;
+			display: inline-block;
+			height: 16px;
+			text-indent: -999999px;
+			width: 16px;
+			
+			@include breakpoint ($tablet) {
+				margin: 0 2px; 
+			}
+
+			&.active {
+				width:16px;
+				height:16px;
+				border-radius:66px;
+				border:1px double #fff;
+				background: rgba(0, 0, 0, 0.5);
+			}
+
+			&:hover {
+				width:16px;
+				height:16px;
+				border-radius:66px;
+				border:1px double #fff;
+				background: rgba(0, 0, 0, 0.5);
+			}
+		}
+	}
+}
+.section {
+	overflow: hidden;
+	padding: 5px;
+
+	@include breakpoint ($tablet) {
+		padding: 5px 0 5px;
+	}
+
+	@include breakpoint ($tablet) {
+		padding: 5px 0 5px;
+	}
+	
+	img {
+		vertical-align: top;
+		width: 100%;
+	}
+
+	a {
+		background: #000;
+		display: block;
+
+		&:hover {
+			img 
+			{
+				opacity: 0.7;
+			}
+		}
+	}
+
+	.caption {
+		position: absolute;
+		text-align: center;
+		color: #fcaf17;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		h2 {
+			font:bold 17px $text;
+			margin:0 0 5px;
+			color: $white;
+			text-transform: uppercase;
+			width: 100%;
+			display: table;
+			vertical-align: middle;
+			height: 100%;
+			
+			@include breakpoint ($tablet) {
+				font-size: 31px;
+			}
+		}
+
+		span {
+			vertical-align: middle;
+			display: table-cell;
+		}
+	}
+
+
+	.image-block {
+		@include breakpoint ($tablet-small) {
+			overflow: hidden;
+			display: block;
+			padding: 0 5px;
+		}
+	}
+
+	.menu {
+		display: block;
+		margin-bottom: 5px;
+		position: relative;
+
+		@include breakpoint ($tablet-small) {
+			overflow: hidden;
+			float: left;
+			width: 49.7%;
+		}
+
+		@include breakpoint ($tablet) {
+			font-size: 23px;
+		}
+	}
+	
+	.location {
+		display: block;
+		margin-bottom: 5px;
+		position: relative;	
+
+		.caption {
+			// top:40%;
+		}
+
+		@include breakpoint ($tablet-small) {
+			overflow: hidden;
+			float: right;
+			width: 49.7%
+		}
+	}	
+	
+	.items {
+		display: block;
+		margin-bottom: 5px;
+		overflow: hidden;
+
+		@include breakpoint ($tablet-small) {
+			float: left;
+			width: 49.7%;
+		}
+
+		@include breakpoint ($tablet) {
+			margin-bottom:0; 
+		} 
+
+		.daily {
+			float: left;
+			width: 49.7%;
+			position: relative;
+		}
+
+		.beer {
+			float: right;
+			width: 49.7%;
+			position: relative;
+		}
+	}
+
+	.btm-sec-right {
+		
+		@include breakpoint ($tablet-small) {
+			float: right;
+			width: 49.8%;
+		}
+
+		.menu {
+			width: 100%;
+			margin-bottom: 0;
+		}
+	}
+
+	.section-slider {
+		display: block;
+		position: relative;
+		margin: 0 0 5px;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+
+		.cycle-gallery.gallery-js-ready {
+			overflow: hidden;
+		}
+
+		.btn-prev, .btn-next {
+			background: #000;
+			width: 40px;
+			height: 40px;
+			display: inline-block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			text-indent: -999999px;
+
+			&:hover {
+				background: #f00;
+			}
+		}	
+
+		.btn-prev {
+			right: 40px;
+
+			&:before {
+				border-bottom: 2px solid #fff;
+				border-left: 2px solid #fff;
+				content: "";
+				display: block;
+				height: 20px;
+				left: 14px;
+				position: absolute;
+				top: 10px;
+				transform: rotate(45deg);
+				width: 20px;
+			}
+		}
+
+		.btn-next {
+			&:before {
+				border-right: 2px solid #fff;
+				border-top: 2px solid #fff;
+				content: "";
+				display: block;
+				height: 20px;
+				left: 6px;
+				position: absolute;
+				top: 10px;
+				transform: rotate(45deg);
+				width: 20px;
+			}
+		}
+	}
+
+	.gift {
+		display: block;
+		margin: 0 0 5px;
+		position: relative;
+
+		.caption {
+			top:30%;
+		}
+	}
+
+	.twit {
+		background: #7fb7be none repeat scroll 0 0;
+		color: #223133;
+		font-size: 12px;
+		padding: 30px 5px 5px;
+		position: relative;
+		text-align: center;
+
+		@include breakpoint ($mobile-large) {
+			padding:30px 5px 20px;
+		}
+
+		@include breakpoint ($tablet) {
+			font-size: 20px;
+			padding: 30px 5px 27px;
+		}
+
+		a {
+			background: none;
+			text-indent: -999999px;
+			
+			&:before {
+				background: url(../images/sprite.png) no-repeat -42px -70px;
+				width: 32px;
+				height: 32px;
+				content:"";
+				display: block;
+				position: absolute;
+				top: 10px;
+				left: 48%;		
+
+				@include breakpoint ($tablet) {
+					top:12px;
+				}
+			}
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+}
+#footer {
+	background: #c00b12;
+	padding: 10px;
+	overflow: hidden;
+
+	.footer-left {
+		display: block;
+		overflow: hidden;
+
+		@include breakpoint ($tablet-small) {
+			float: left;
+			width: 49.5%;
+		}
+
+		@include breakpoint ($tablet) {
+			padding: 28px 40px;
+			width: 62%;
+		}
+
+		.footer-logo {
+			width: 30%;
+			float: left;
+			margin: 0 3% 0 0;
+
+			@include breakpoint ($tablet) {
+				margin: 0; 
+				width:21.4%; 
+			} 
+		}
+
+		.footer-nav {
+			float: left;
+			font-size: 10px;
+			width: 65%;
+
+			@include breakpoint ($tablet) {
+				padding: 10px 0;
+				font-size: 13px;
+				width: 75%;
+			}
+
+			h5 {
+				font:bold 15px/15px $base-font-family;
+				margin: 0 0 5px;
+				text-transform: uppercase;
+
+				@include breakpoint ($tablet) {
+					font-size: 27px;
+					line-height: 21px;
+					margin: 0 0 14px;
+				}
+			}
+
+			ul {
+				@extend %listreset;
+				margin: 0 0 10px;
+				overflow: hidden;
+
+				@include breakpoint ($tablet) {
+					margin: 0 0 23px;
+				}
+			}
+
+			li {
+				font-size: 10px;
+
+				@include breakpoint ($tablet-small) {
+					float: left;
+					margin: 0 10px 0 0;
+				}
+
+				@include breakpoint ($tablet) {
+					font-size: 16px;
+				}
+
+				a {
+					color: $white;
+					text-decoration: underline;
+
+					&:hover {
+						text-decoration: none;
+					}
+				}
+			}
+
+			span {
+				text-decoration: underline;
+				cursor: pointer;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+	.footer-right {
+		display: block;
+		text-align: center;
+		overflow: hidden;
+
+		@include breakpoint ($tablet-small) {
+			float: left;
+			width: 49.5%;
+			text-align: left;
+		}
+
+		@include breakpoint ($tablet) {
+			padding: 39px 40px 0 0;
+			text-align: right;
+			width: 38%;
+		}
+
+		.social-networks {
+			width: 100%;
+			margin: 0 0 10px;
+			@extend %listreset;
+
+			@include breakpoint ($tablet) {
+				margin:0 0 22px;
+			}
+
+			ul {
+				@extend %listreset;
+			}
+
+			li {
+				display: inline-block;
+
+				@include breakpoint ($tablet) {
+					margin: 0 0 0 6px;
+				}
+
+				.footer-gmail {
+					background: url(../images/sprite.png) no-repeat 0 -70px;
+					width: 32px;
+					height: 32px;
+					text-indent: -999999px;
+					display: block;
+
+					@include breakpoint ($tablet) {
+						text-align: left;
+					}
+
+					&:hover {
+						background: url(../images/sprite.png) no-repeat 0 0;
+						width: 32px;
+						height: 32px;
+					}
+				}
+
+				.footer-twitter {
+					background: url(../images/sprite.png) no-repeat -42px -70px;
+					width: 32px;
+					height: 32px;
+					text-indent: -999999px;
+					display: block;
+
+					@include breakpoint ($tablet) {
+						text-align: left;
+					}
+
+					&:hover {
+						background: url(../images/sprite.png) no-repeat -42px 0;
+						width: 32px;
+						height: 32px;
+					}
+				}
+
+				.footer-facebook {
+					background: url(../images/sprite.png) no-repeat -84px -70px;
+					width: 32px;
+					height: 32px;
+					text-indent: -999999px;
+					display: block;
+
+					@include breakpoint ($tablet) {
+						text-align: left;
+					}
+
+					&:hover {
+						background: url(../images/sprite.png) no-repeat -84px 0;
+						width: 32px;
+						height: 32px;
+					}
+				}
+			}
+		}
+
+		.login {
+			display: block;
+
+			@include breakpoint ($tablet) {
+				float: left;
+				width: 100%;
+			}
+
+			ul {
+				@extend %listreset;
+			}
+
+			li {
+				margin: 0 0 9px;
+
+				@include breakpoint ($tablet-small) {
+					float: left;
+				}
+
+				@include breakpoint ($tablet) {
+					margin: 0 0 0 10px;
+				}
+			}
+
+			input[type=text] {
+				border: medium none;
+				color: #8d8d8d;
+				font: 12px/10px "Montserrat",Arial,Helvetica,sans-serif;
+				height: 40px;
+				padding: 5px;
+				width: 220px;
+				float: left;
+
+				@include placeholder {
+					color: #8d8d8d;
+				}
+
+				@include breakpoint ($tablet-small) {
+					width: 300px;
+				}
+
+				@include breakpoint ($tablet) {
+					height: 70px;
+					padding: 8px 18px;
+					width: 78%;
+					font-size: 16px;
+					line-height: 32px;
+					margin: 0 2% 0 0;
+				}
+			}
+
+			input[type=submit] {
+				background: #231f20;
+				color: $white;
+				border: none;
+				font: 16px $text;
+				padding: 8px;
+				font-weight: bold;
+				float: left;
+				text-transform: uppercase;
+				width: 26%;
+
+				@include breakpoint ($mobile-large) {
+					width: 20%;
+				}
+
+				@include breakpoint ($tablet) {
+					padding:23px 0;
+				}
+
+				&:hover {
+					background: #f00;
+				}
+			}
+		}
+	}
+}
+.container {
+	height: 100%;
+	
+	@include breakpoint ($tablet-small) {
+		position: relative;
+		top: -109px;
+	}
+
+	@include breakpoint ($tablet){
+		position: relative;
+		top: -145px;
+		}
+}
+.nav-active{
+	#header #nav{
+		.drop{
+			max-height: 1000px !important;
+			padding: 0 !important;
+		}
+	}
+}
